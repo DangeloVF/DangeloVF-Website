@@ -1,0 +1,191 @@
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: filter 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+.btn:hover         { filter: brightness(1.25); transform: translateY(-1px); }
+.btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+.btn-primary   { background: var(--cyan); color: var(--bg); }
+.btn-secondary {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 0.55rem 1.55rem;
+}
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+.card {
+  background: var(--bg2);
+  position: relative;
+  padding: 1.5rem;
+  transition: transform 0.2s;
+}
+/* Corner bracket accents */
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--cyan);
+  border-style: solid;
+}
+.card::before { top: -1px;    left: -1px;  border-width: 2px 0 0 2px; }
+.card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.card:hover   { transform: translateY(-2px); }
+
+/* Top-edge reveal bar */
+.card-reveal {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cyan);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.card:hover .card-reveal { transform: scaleX(1); }
+
+/* ─── Section layout ────────────────────────────────────────── */
+.section {
+  padding: 5rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+}
+/* Full-width divider — escapes max-width; pixelated dissolve    */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent          0%,
+    transparent          2%,
+    rgba(0,245,255,0.06) 2%,
+    rgba(0,245,255,0.06) 3%,
+    transparent          3%,
+    transparent          5%,
+    rgba(0,245,255,0.12) 5%,
+    rgba(0,245,255,0.12) 6%,
+    rgba(0,245,255,0.22) 6%,
+    rgba(0,245,255,0.22) 8%,
+    rgba(0,245,255,0.35) 8%,
+    rgba(0,245,255,0.35) 12%,
+    rgba(0,245,255,0.4)  12%,
+    rgba(0,245,255,0.4)  88%,
+    rgba(0,245,255,0.35) 88%,
+    rgba(0,245,255,0.35) 92%,
+    rgba(0,245,255,0.22) 92%,
+    rgba(0,245,255,0.22) 94%,
+    rgba(0,245,255,0.12) 94%,
+    rgba(0,245,255,0.12) 95%,
+    transparent          95%,
+    transparent          97%,
+    rgba(0,245,255,0.06) 97%,
+    rgba(0,245,255,0.06) 98%,
+    transparent          98%
+  );
+}
+
+/* ─── Section watermark ─────────────────────────────────────── */
+/* z-index: -1 within an isolated stacking context sits above    */
+/* the body background (+ marks) but behind all section content. */
+/* background: var(--bg) blankets the + marks in its area.       */
+/* right formula escapes the max-width container to the viewport */
+/* right edge: when container = 100vw, (100vw - 100%) = 0.       */
+.section-watermark {
+  position: absolute;
+  bottom: 1.5rem;
+  right: calc(1.5rem - (100vw - 100%) / 2);
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  color: #080810;
+  -webkit-text-stroke: 2px #091a1a;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  letter-spacing: -0.02em;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--white);
+  margin: 0 0 2.5rem;
+}
+.section-number {
+  color: var(--cyan);
+  margin-right: 0.4rem;
+}
+
+/* ─── Standalone section pages ─────────────────────────────── */
+/* Makes the single section fill the viewport so the watermark  */
+/* always lands at the bottom, even with short content.         */
+.standalone-main {
+  display:        flex;
+  flex-direction: column;
+  min-height:     100vh;
+}
+.standalone-main > section { flex: 1; width: 100%; }
+
+/* ─── Hero sprite ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-sprite { display: none; }
+}
+
+/* ─── Featured project card ─────────────────────────────────── */
+.project-featured-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 640px) {
+  .project-featured-card { grid-template-columns: 1fr; }
+  .project-terminal       { display: none; }
+}
+
+/* ─── Contact grid ──────────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Tag pills ─────────────────────────────────────────────── */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.05em;
+}
+.tag-cyan    { color: var(--cyan);    border: 1px solid var(--cyan);    background: rgba(0,245,255,0.08); }
+.tag-magenta { color: var(--light-magenta); border: 1px solid var(--light-magenta); background: rgba(255,85,255,0.08); }
+.tag-yellow  { color: var(--yellow);  border: 1px solid var(--yellow);  background: rgba(255,229,0,0.08); }

@@ -1,0 +1,13 @@
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after       { animation: none; }
+  .cursor::after       { animation: none; }
+  .ticker-track        { animation: none; }
+  .section-label,
+  .section-title,
+  .card                { opacity: 1; animation: none; }
+  .card.is-visible,
+  .section-label.is-visible,
+  .section-title.is-visible { animation: none; }
+  *                    { transition-duration: 0.01ms !important; }
+}

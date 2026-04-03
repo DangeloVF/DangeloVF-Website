@@ -1,0 +1,182 @@
+/* ─── Site bar (public-facing link at top) ──────────────────── */
+.site-bar {
+  padding: 0.5rem 2rem;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(90,90,122,0.3);
+}
+.site-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--dim);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.site-logo:hover { color: var(--white); }
+.site-logo span  { color: var(--cyan); }
+
+/* ─── Login page ────────────────────────────────────────────── */
+.login-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+.login-wrap h1 {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--cyan);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+.login-wrap form {
+  background: var(--bg2);
+  border: 1px solid var(--dim);
+  border-top: 2px solid var(--cyan);
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+}
+.login-wrap .error {
+  color: var(--light-magenta);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+}
+
+/* ─── Admin header ──────────────────────────────────────────── */
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--dim);
+}
+.admin-header h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+}
+.admin-header button {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: none;
+  border: 1px solid var(--dim);
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.admin-header button:hover { color: var(--light-magenta); border-color: var(--light-magenta); }
+
+/* ─── Tab nav ───────────────────────────────────────────────── */
+#admin-nav {
+  display: flex;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--dim);
+  padding: 0 1.5rem;
+}
+.tab-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover  { color: var(--white); }
+.tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+/* ─── Panel inner ───────────────────────────────────────────── */
+.panel-inner { padding: 2rem; }
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Two-column sidebar + form grid ───────────────────────── */
+/* Projects and posts wrap their own layout div */
+#projects-layout,
+#posts-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Skills and qualifications apply the grid directly on panel-inner */
+#tab-skills .panel-inner,
+#tab-qualifications .panel-inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  column-gap: 2rem;
+  align-items: start;
+}
+#tab-skills .panel-inner h2,
+#tab-qualifications .panel-inner h2 { grid-column: 1 / -1; }
+
+/* ─── Sidebar ───────────────────────────────────────────────── */
+aside {
+  background: var(--bg2);
+  border: 1px solid var(--dim);
+  border-top: 2px solid var(--cyan);
+}
+aside ul { list-style: none; }
+
+/* "New" button at top of sidebar */
+aside > button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(0,245,255,0.05);
+  border: none;
+  border-bottom: 1px solid var(--dim);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+aside > button:hover { background: rgba(0,245,255,0.12); }
+
+/* Sidebar list item buttons */
+aside li button {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--white);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(90,90,122,0.25);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+aside li button:hover  { background: rgba(0,245,255,0.06); color: var(--cyan); }
+aside li button.active { background: rgba(0,245,255,0.1);  color: var(--cyan); }
+
+/* Form panel wrapper — prevents grid blowout */
+.form-panel { min-width: 0; }

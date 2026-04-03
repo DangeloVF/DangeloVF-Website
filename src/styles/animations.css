@@ -1,0 +1,67 @@
+/* ─── Glitch ───────────────────────────────────────────────── */
+/* 0%/100% clips to nothing — invisible at rest, flashes on     */
+/* each 3 s cycle without needing a hover trigger               */
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(50% 0 50% 0); transform: translate(-3px, 0); }
+  20%       { clip-path: inset(30% 0 50% 0); transform: translate(3px, 0); }
+  40%       { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 0); }
+  60%       { clip-path: inset(80% 0 5% 0);  transform: translate(3px, 0); }
+  80%       { clip-path: inset(10% 0 70% 0); transform: translate(-3px, 0); }
+}
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(50% 0 50% 0); transform: translate(3px, 0); color: var(--light-magenta); }
+  25%       { clip-path: inset(10% 0 80% 0); transform: translate(-3px, 0); }
+  50%       { clip-path: inset(70% 0 10% 0); transform: translate(3px, 0); color: var(--cyan); }
+  75%       { clip-path: inset(40% 0 40% 0); transform: translate(-3px, 0); }
+}
+
+.glitch { position: relative; display: inline-block; }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+.glitch::before { color: var(--cyan);    animation: glitch-1 3s infinite linear; }
+.glitch::after  { color: var(--light-magenta); animation: glitch-2 3s infinite linear; }
+
+/* ─── Cursor blink ─────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  color: var(--magenta);
+}
+
+/* ─── Scrolling ticker ─────────────────────────────────────── */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-scroll 30s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* ─── Scroll reveal ────────────────────────────────────────── */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Hidden until the IntersectionObserver adds .is-visible       */
+.section-label,
+.section-title { opacity: 0; }
+.card          { opacity: 0; }
+
+.section-label.is-visible { animation: reveal-up 0.5s ease forwards; }
+.section-title.is-visible { animation: reveal-up 0.5s ease 0.1s forwards; }
+.card.is-visible          { animation: reveal-up 0.5s ease forwards; }

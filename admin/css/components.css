@@ -1,0 +1,176 @@
+/* ─── Thumbnail drop zones ──────────────────────────────────── */
+#thumbnail-drop-zone,
+#post-thumbnail-drop-zone {
+  border: 1px dashed var(--dim);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+#thumbnail-drop-zone:hover,
+#post-thumbnail-drop-zone:hover,
+#thumbnail-drop-zone.drag-over,
+#post-thumbnail-drop-zone.drag-over {
+  border-color: var(--cyan);
+  background: rgba(0,245,255,0.04);
+}
+
+#thumbnail-drop-label,
+#post-thumbnail-drop-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--dim);
+  pointer-events: none;
+}
+
+#thumbnail-file,
+#post-thumbnail-file { display: none; }
+
+#thumbnail-preview,
+#post-thumbnail-preview {
+  max-width: 100%;
+  max-height: 160px;
+  margin-top: 0.75rem;
+  border: 1px solid var(--dim);
+}
+
+/* ─── Markdown editor / preview split ──────────────────────── */
+.md-editor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.md-editor textarea { min-height: 200px; margin-bottom: 0; }
+
+.md-preview {
+  min-height: 200px;
+  background: var(--bg3);
+  border: 1px solid var(--dim);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--white);
+  overflow-y: auto;
+}
+.md-preview p              { margin: 0 0 0.75rem; }
+.md-preview h1,
+.md-preview h2,
+.md-preview h3             { font-family: var(--font-display); color: var(--cyan); margin: 1rem 0 0.5rem; }
+.md-preview a              { color: var(--light-magenta); }
+.md-preview code           { font-family: var(--font-mono); font-size: 0.8rem; background: var(--bg2); padding: 0.1em 0.3em; }
+.md-preview pre            { background: var(--bg2); padding: 0.75rem; overflow-x: auto; }
+.md-preview img            { max-width: 100%; }
+
+/* Label + upload button row above markdown editors */
+.md-label-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.md-label-bar label { margin: 0; }
+
+/* ─── Images tab ────────────────────────────────────────────── */
+.img-group-card {
+  border: 1px solid var(--dim);
+  border-top: 2px solid var(--cyan);
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+}
+.img-group-card.orphaned           { border-top-color: var(--light-magenta); }
+.img-group-card.orphaned h3        { color: var(--light-magenta); }
+
+.img-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.img-group-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--white);
+  margin: 0 0 0.25rem;
+}
+.img-group-header code {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--dim);
+}
+
+.img-group-section { margin-top: 1rem; }
+
+.img-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.img-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 0;
+}
+
+.img-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.img-item {
+  border: 1px solid var(--dim);
+  background: var(--bg3);
+  overflow: hidden;
+}
+.img-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+.img-item-footer {
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.img-item-footer code {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--dim);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Bio version select ────────────────────────────────────── */
+#bio-version-select { margin-bottom: 1.5rem; border-color: var(--cyan); }
+
+/* ─── Status indicator (Bio panel) ─────────────────────────── */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.status-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

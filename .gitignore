@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env
+.env.local
+.env*.local
+*.log
+
+# Claude / personal docs
+CLAUDE.md
+styleguide.md
+To do.md
+plan.md
+.claude/
+cyberpunk-styleGuide.md
+y2k-brutalist-styleGuide.md
+cyber-y2k-styleGuide.md
+theme-preview/
+theme-preview-2/
+.vscode/

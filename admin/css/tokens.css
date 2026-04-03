@@ -1,0 +1,64 @@
+/* ─── Self-hosted fonts ─────────────────────────────────────── */
+@font-face {
+  font-family: 'VT323';
+  src: url('../fonts/vt323-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('../fonts/share-tech-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('../fonts/rajdhani-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('../fonts/rajdhani-latin-500-normal.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('../fonts/rajdhani-latin-600-normal.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+/* ─── Design tokens ────────────────────────────────────────── */
+:root {
+  --bg:           #080810;
+  --bg2:          #0d0d1a;
+  --bg3:          #12122a;
+  --cyan:         #00f5ff;
+  --light-magenta: #ff55ff;
+  --yellow:       #ffe500;
+  --white:        #e8e8f0;
+  --dim:          #5a5a7a;
+  --font-display: 'VT323', monospace;
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-body:    'Rajdhani', sans-serif;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* [hidden] must beat ID/element display rules (e.g. delete buttons) */
+[hidden] { display: none !important; }
+
+/* Dark colour scheme so browser chrome (scrollbars, inputs) renders light */
+:root { color-scheme: dark; }
+
+/* ─── Base ──────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

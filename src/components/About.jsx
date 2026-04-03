@@ -42,14 +42,34 @@ export default function About() {
           style={{ minWidth: 220, fontFamily: 'var(--font-mono)', fontSize: '0.8rem', lineHeight: 2, color: 'var(--dim)' }}
         >
           <div style={{ color: 'var(--cyan)', marginBottom: '0.5rem' }}>$ whoami</div>
-          <div><span style={{ color: 'var(--light-magenta)' }}>name</span>: {bio?.name ?? "D'Angelo V. F."}</div>
-          <div><span style={{ color: 'var(--light-magenta)' }}>role</span>: {bio?.headline ?? 'CS & Electronics Grad'}</div>
-          <div><span style={{ color: 'var(--light-magenta)' }}>base</span>: Oxford, UK</div>
-          <div><span style={{ color: 'var(--light-magenta)' }}>status</span>: {(() => {
-            const cfg = { ready: ['#00ff88', 'Available'], busy: ['#ffe500', 'Busy'], offline: ['#ff4444', 'Offline'] }
-            const [color, label] = cfg[bio?.available] ?? ['var(--dim)', '—']
-            return <span style={{ color }}>{label}</span>
-          })()}</div>
+          <table style={{ borderCollapse: 'collapse' }}>
+            <tbody>
+              <tr>
+                <td style={{ color: 'var(--light-magenta)', paddingRight: '1rem', whiteSpace: 'nowrap', verticalAlign: 'top' }}>name:</td>
+                <td>{bio?.name ?? "D'Angelo V. F."}</td>
+              </tr>
+              <tr>
+                <td style={{ color: 'var(--light-magenta)', paddingRight: '1rem', whiteSpace: 'nowrap', verticalAlign: 'top' }}>pronouns:</td>
+                <td>they/them</td>
+              </tr>
+              <tr>
+                <td style={{ color: 'var(--light-magenta)', paddingRight: '1rem', whiteSpace: 'nowrap', verticalAlign: 'top' }}>role:</td>
+                <td>{bio?.headline ?? 'CS & Electronics Grad'}</td>
+              </tr>
+              <tr>
+                <td style={{ color: 'var(--light-magenta)', paddingRight: '1rem', whiteSpace: 'nowrap', verticalAlign: 'top' }}>base:</td>
+                <td>Oxford, UK</td>
+              </tr>
+              <tr>
+                <td style={{ color: 'var(--light-magenta)', paddingRight: '1rem', whiteSpace: 'nowrap', verticalAlign: 'top' }}>status:</td>
+                <td>{(() => {
+                  const cfg = { ready: ['#00ff88', 'Available'], busy: ['#ffe500', 'Busy'], offline: ['#ff4444', 'Offline'] }
+                  const [color, label] = cfg[bio?.available] ?? ['var(--dim)', '—']
+                  return <span style={{ color }}>{label}</span>
+                })()}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <span aria-hidden="true" className="section-watermark">.01</span>

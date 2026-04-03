@@ -50,7 +50,7 @@ export default function Hero() {
 
         <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'var(--dim)', maxWidth: 480, lineHeight: 1.7, marginBottom: '2.5rem' }}>
           Signal processing, embedded systems, and audio-visual tech.
-          Master's graduate from Bristol — building things that you can see and hear.
+          Computer Science and Electronics Master's graduate from Bristol - building things that you can see and hear.
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

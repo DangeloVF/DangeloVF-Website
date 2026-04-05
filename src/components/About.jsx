@@ -21,7 +21,7 @@ export default function About() {
         <span className="section-number">{'>'}</span> About
       </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '4rem', alignItems: 'start' }}>
+      <div className="about-grid">
         <div>
           {loading && <p className="loading-text">Loading...</p>}
           {error   && <p role="alert">{error}</p>}

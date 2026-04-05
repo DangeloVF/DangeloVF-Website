@@ -168,6 +168,17 @@
   .project-terminal       { display: none; }
 }
 
+/* ─── About grid ────────────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── Contact grid ──────────────────────────────────────────── */
 .contact-grid {
   display: grid;

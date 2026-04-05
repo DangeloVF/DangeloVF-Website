@@ -32,13 +32,14 @@ if ($_POST['action'] === 'upload_image') {
     exit;
   }
 
-  if (strpos(mime_content_type($file['tmp_name']), 'image/') !== 0) {
+  $imageInfo = getimagesize($file['tmp_name']);
+  if (!$imageInfo || strpos($imageInfo['mime'], 'image/') !== 0) {
     http_response_code(400);
     echo json_encode(['error' => 'File is not an image']);
     exit;
   }
 
-  $dir = __DIR__ . '/../../img/content/' . $type . '/' . $id;
+  $dir = realpath(__DIR__ . '/../../img') . DIRECTORY_SEPARATOR . 'content' . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $id;
   if (!is_dir($dir)) mkdir($dir, 0755, true);
 
   $ext      = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));

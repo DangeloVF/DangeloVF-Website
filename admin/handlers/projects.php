@@ -7,17 +7,19 @@ if ($_POST['action'] === 'save_project') {
 
   if (!empty($_FILES['thumbnail_file']['size'])) {
     $allowedMimes = ['image/jpeg' => 'jpg', 'image/png' => 'png'];
-    $mime         = mime_content_type($_FILES['thumbnail_file']['tmp_name']);
+    $imageInfo    = getimagesize($_FILES['thumbnail_file']['tmp_name']);
+    $mime         = $imageInfo ? $imageInfo['mime'] : '';
     if (!isset($allowedMimes[$mime])) {
       die('Invalid thumbnail type — only JPEG and PNG are accepted.');
     }
-    $uploadDir = __DIR__ . '/../../img/projects';
+    $uploadDir = realpath(__DIR__ . '/../../img') . DIRECTORY_SEPARATOR . 'projects';
     if (!is_dir($uploadDir)) {
       mkdir($uploadDir, 0755, true);
     }
     $ext      = $allowedMimes[$mime];
     $filename = uniqid('project_') . '.' . $ext;
-    move_uploaded_file($_FILES['thumbnail_file']['tmp_name'], $uploadDir . '/' . $filename);
+    move_uploaded_file($_FILES['thumbnail_file']['tmp_name'], $uploadDir . DIRECTORY_SEPARATOR . $filename);
+    $thumbnail = '/img/projects/' . $filename;
     $thumbnail = '/img/projects/' . $filename;
   }
 

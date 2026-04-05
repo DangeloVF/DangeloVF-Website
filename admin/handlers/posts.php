@@ -7,11 +7,12 @@ if ($_POST['action'] === 'save_post') {
 
   if (!empty($_FILES['thumbnail_file']['size'])) {
     $allowedMimes = ['image/jpeg' => 'jpg', 'image/png' => 'png'];
-    $mime         = mime_content_type($_FILES['thumbnail_file']['tmp_name']);
+    $imageInfo    = getimagesize($_FILES['thumbnail_file']['tmp_name']);
+    $mime         = $imageInfo ? $imageInfo['mime'] : '';
     if (!isset($allowedMimes[$mime])) {
       die('Invalid thumbnail type — only JPEG and PNG are accepted.');
     }
-    $uploadDir = __DIR__ . '/../../img/posts';
+    $uploadDir = realpath(__DIR__ . '/../../img') . DIRECTORY_SEPARATOR . 'posts';
     if (!is_dir($uploadDir)) {
       mkdir($uploadDir, 0755, true);
     }
